@@ -17,7 +17,7 @@ const schemaReceita = new Schema({
     },
     ingredientes : [{
         required : true,
-        type:String,
+        type:String,    
     }],
     tags:[{
         type : String,
