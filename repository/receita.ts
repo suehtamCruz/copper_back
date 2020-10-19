@@ -3,7 +3,8 @@ const receitaSchema = Receitas.model('Receitas');
 
 
 export async function find(){
-
+    let data  = await receitaSchema.find();
+    return data;
 }   
 export async function create(data:any){
     let receitaNew = new receitaSchema(data);
