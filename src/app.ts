@@ -16,8 +16,4 @@ if(connection){
 app.listen(3003);
 app.use(express.json());
 
-
-
-
-
 app.use('/',router);

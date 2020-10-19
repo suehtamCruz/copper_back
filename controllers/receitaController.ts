@@ -36,3 +36,31 @@ export async function findAll(request:Request,response:Response){
         });
     }
 }
+
+export async function findAndUpdate(request:Request,response:Response){
+    try{
+        let data = await update(request.params.id, request.body);
+        return response.status(200).json({
+            message: "RECEITA ATUALIZADA COM SUCESSO!",
+        }); 
+    }catch(e){
+        return response.status(500).json({
+            message : "ERRO AO FAZER O UPDATE NA RECEITA..",
+            error: e,
+        });
+    }
+}
+
+export async function findAndRemove(request:Request,response:Response){
+    try{
+        await del(request.params.id);
+        return response.status(200).json({
+            message : "RECEITA DELETADA COM SUCESSO, NUNCA GOSTEI DELA MESMO..."
+        });
+    }catch(e){
+        return response.status(500).json({
+            message : "ERRO AO DELETAR ESTA RECEITA...",
+            error : e,
+        });
+    }      
+}

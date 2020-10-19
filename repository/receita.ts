@@ -10,9 +10,11 @@ export async function create(data:any){
     let receitaNew = new receitaSchema(data);
     await receitaNew.save();
 }   
-export async function update(id:number , data:any ){
-
+export async function update(id:string , data:any ){
+    let receita = await receitaSchema.findByIdAndUpdate(id, data);
+    return receita;
 }   
-export async function del(id:number){
-
+export async function del(id:string){
+    const receita = await receitaSchema.findByIdAndRemove(id);
+    return receita;
 }   
