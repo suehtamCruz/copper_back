@@ -1,5 +1,5 @@
 import { Request , Response}from 'express';
-import {create , find , update , del} from '../repository/receita';
+import {create , find , update , del , findTag} from '../repository/receita';
 // title
 // time
 // porcoes
@@ -63,4 +63,16 @@ export async function findAndRemove(request:Request,response:Response){
             error : e,
         });
     }      
+}
+
+export async function findByTag(request:Request,response:Response){
+    try{
+        let receita = await findTag(request.params.tags);
+        return response.status(200).json(receita);
+    }catch(e){
+        return response.status(500).json({
+            message : "ERRO A PROCURAR POR ESTA TAG!",
+            error : e,
+        });
+    }
 }

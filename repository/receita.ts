@@ -10,7 +10,12 @@ export async function create(data:any){
     let receitaNew = new receitaSchema(data);
     await receitaNew.save();
 }   
-
+export async function findTag(tag:string){
+    let tags =  await receitaSchema.findOne({
+        tags : tag,
+    });
+    return tags;
+}
 export async function update(id:string , data:any ){
     let receita = await receitaSchema.findByIdAndUpdate(id, data);
     return receita;
