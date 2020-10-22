@@ -68,6 +68,12 @@ export async function findAndRemove(request:Request,response:Response){
 export async function findByTag(request:Request,response:Response){
     try{
         let receita = await findTag(request.params.tags);
+        if(!receita){
+            return response.status(200).json({
+                message : "TENTE COM OUTRA PALAVRA CHAVE"
+            });
+
+        }
         return response.status(200).json(receita);
     }catch(e){
         return response.status(500).json({
