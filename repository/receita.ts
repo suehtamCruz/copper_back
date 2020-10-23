@@ -3,7 +3,7 @@ const receitaSchema = Receitas.model('Receitas');
 
 
 export async function find(){
-    let data  = await receitaSchema.find();
+    let data  = await receitaSchema.find({},'title time porcoes ingredientes ');
     return data;
 }   
 export async function create(data:any){
